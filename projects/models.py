@@ -26,7 +26,7 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add= True)
     updated_at = models.DateTimeField(auto_now= True)
     category = models.ForeignKey(Category, on_delete= models.PROTECT) #if the user is deleted, any related project won't be deleted
-    user = models.ForeignKey(AUTH_USER_MODEL, on_delete= models.CASCADE) #if the user is deleted, any related project will be deleted
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete= models.CASCADE, null =True) #if the user is deleted, any related project will be deleted
 
     def __str__(self):  
         return self.title

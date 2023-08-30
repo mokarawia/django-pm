@@ -1,0 +1,10 @@
+{% block content %}
+    <h3>My Projects</h3>
+    <ul>
+        {% for project in object_list %}
+            <li>{{ project.title }}</li>
+        {% empty %} <!-- if the list is empty show this message -->
+            <li>There are no projects to show</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

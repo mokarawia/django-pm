@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>
+    Create Project 
+</h1>
+
+<form method= "POST">
+    {% csrf_token %} <!--a security measure to protect against malicious form submissions -->
+    {{form}}
+    <!--btn btn-primary will make the button colour blue -->
+    <input class= "btn btn-primary" type= 'submit' value= 'Submit' />
+</form>
+
+{% endblock content %}
