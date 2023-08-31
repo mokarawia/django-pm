@@ -1,0 +1,28 @@
+<ul>
+    {% for task in project.task_set.all %} <!--retrieves all the tasks related to the project-->
+    <li>
+        <form method= "POST" action="{% url 'Task_Update' task.id %}">
+            {% csrf_token %}
+            <input 
+            type= 'checkbox' 
+            name= 'is_completed' 
+            {% if task.is_completed %} checked {% endif %}
+            onchange= 'this.form.submit()'
+            />
+            <!--If the task is marked as completed task.is_completed is true, the checkbox is checked. The onchange attribute is set to submit the form automatically when the checkbox value changes -->
+            {{ task.description }}
+        </form>
+        <form method= "POST" action="{% url 'Task_Delete' task.id %}">
+            {% csrf_token %}
+            <button type= 'submit'> Delete </button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+<form method= "POST" action="{% url 'Task_Create' %}">
+    {% csrf_token %} <!--a security measure to protect against malicious form submissions -->
+    <input type= 'hidden' value= '{{ project.id }}' name='project' />
+    <input type= 'text' name='description' placeholder= 'New Task' />
+    <input type= 'submit' value= 'Add' />
+</form>

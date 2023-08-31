@@ -10,3 +10,13 @@ class ProjectCreateForm(forms.ModelForm):
             'description' : forms.Textarea(),
             'category' : forms.Select(),
         }
+
+class ProjectUpdateForm(forms.ModelForm):
+    class Meta:
+        model = models.Project
+        fields = ['title', 'status', 'category']
+        widgets = {
+            'title' : forms.TextInput(),
+            'status' : forms.Select(),
+            'category' : forms.Select(),
+        }
