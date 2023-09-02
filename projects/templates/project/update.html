@@ -1,13 +1,58 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load humanize %}
+{% load i18n %}
+
 {% block content %}
 
-    <form method= "POST">
-        {% csrf_token %} <!--a security measure to protect against malicious form submissions -->
-        {{form}}
-        <!--btn btn-primary will make the button colour blue -->
-        <input class= "btn btn-primary" type= 'submit' value= 'Submit' />
-    </form>
-    <a href="{% url 'Project_Delete' project.id %}" > Delete </a>
-    {% include 'project/task.html' with project=object %} <!--To add the task.html in the update page -->
-                                          <!--Makes any project in task.html file represents object so instead of writing object.id we write project.id-->
-{% endblock content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <h5>
+                    {{ object.title }}
+                </h5>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-3">
+            <form method="POST">
+                <div class="card">
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="mb-3">
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                        <div class="d-flex mt-2">
+                            <span class="me-auto text-muted small">
+                                <i class="bi bi-clock"></i>
+                                <time datetime="{{ project.created_at }}">
+                                    {{ object.created_at|naturaltime }}
+                                </time>
+                            </span>
+                        </div>
+                    </div>
+
+                        <div class="card-footer">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success">
+                                    <i class="bi bi-save"></i>
+                                    {% trans 'Save' %}
+                                </button>
+                                <a class="btn btn-danger" href="{% url 'Project_Delete' object.id %}">
+                                    <i class="bi bi-trash"></i>
+                                    {% trans 'Delete' %}
+                                </a>
+                            </div>
+                        </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9 mt-2 mt-md-0">
+{#            {% include 'projects/project_task_stats.html' with project=object %}#}
+            {% include 'project/task.html' with project=object %}
+        </div>
+    </div>
+{% endblock %}

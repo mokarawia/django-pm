@@ -1,13 +1,10 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
-
-<p> Are you sure? </p>
-
-<form method= "POST">
-    {% csrf_token %} <!--a security measure to protect against malicious form submissions -->
-    {{form}}
-    <!--btn btn-primary will make the button colour blue -->
-    <input class= "btn btn-primary" type= 'submit' value= 'Submit' />
-</form>
-
-{% endblock content %}
+    <h2>{% trans 'Alert' %}</h2>
+    <form action="" method="post">{% csrf_token %}
+        <p class="text-muted my-4">{% trans 'Are you sure to delete' %} "{{ project.title }}"?</p>
+        <button class="btn btn-danger" type="submit">{% trans 'Delete' %}</button>
+    </form>
+{% endblock %}

@@ -1,15 +1,23 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
-
-<h1>
-    Create Project 
-</h1>
-
-<form method= "POST">
-    {% csrf_token %} <!--a security measure to protect against malicious form submissions -->
-    {{form}}
-    <!--btn btn-primary will make the button colour blue -->
-    <input class= "btn btn-primary" type= 'submit' value= 'Submit' />
-</form>
-
-{% endblock content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="card col-md-6 px-0">
+                <div class="card-header">
+                    <h3 class="mb-0 py-2">{% trans "New Project" %}</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% include "common/form.html" with form=form %}
+                        <button class="btn btn-success">
+                            {% trans "Create" %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
