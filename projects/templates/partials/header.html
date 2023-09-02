@@ -16,15 +16,21 @@
                        <a class="nav-link" aria-current="page" href="{% url 'Project_List' %}">{% trans 'Home' %}</a>
                    </li>
                </ul>
+
+                <!-- Show Search Bar only if logged in and instead show log in button  -->
+               {% if user.is_authenticated %}
                    <ul class="navbar-nav mb-2 mb-lg-0 me-3">
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           {{ user.username }}
                       </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+                      </ul>
                     </li>
                   </ul>
-
-                  <!-- Search bar code -->
+                  <!-- Search Bar -->
                   <form method="GET" action="{% url 'Project_List' %}" class="d-flex">
                        <div class="input-group">
                            <input
@@ -39,6 +45,11 @@
                            </button>
                        </div>
                    </form>
+               {% else %}
+                   <a class="btn btn-outline-light" href="{% url 'login' %}">
+                    {% trans 'Login' %}
+                   </a>
+               {% endif %}
           </div>
        </div>
    </nav>
