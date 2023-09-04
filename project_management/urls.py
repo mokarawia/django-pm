@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.utils.translation import gettext as _
 
+#Changes associated with admin panel
 admin.site.site_header = _('Projects Management')
 admin.site.site_title = _('Projects Management')
 
