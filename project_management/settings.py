@@ -26,10 +26,7 @@ SECRET_KEY = 'django-insecure-zsfyt%(=kub-!(mpd08pazy&x0(15_x$oxm%gixoe34)ok%*r)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = [
-    'django-pm-zwvm.onrender.com/', '127.0.0.1'
-]
+ALLOWED_HOSTS = ['django-pm-l7so.onrender.com']
 
 
 # Application definition
@@ -92,10 +89,6 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-	"default": dj_database_url.parse("postgres://django_pm_efm6_user:Hv9hywhg7mIn8Wb53yXGyNWYkJyWu5ds@dpg-cjrhnhe1208c739vb07g-a.oregon-postgres.render.com/django_pm_efm6")
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -133,8 +126,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
