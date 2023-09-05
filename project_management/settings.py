@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-zsfyt%(=kub-!(mpd08pazy&x0(15_x$oxm%gixoe34)ok%*r)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'django-pm.render.com', '127.0.0.1'
+    'django-pm-zwvm.onrender.com/', '127.0.0.1'
 ]
 
 
