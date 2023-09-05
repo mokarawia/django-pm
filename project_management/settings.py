@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'project_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_pm_efm6',
-        'USER': 'django_pm_efm6_user',
-        'PASSWORD': 'Hv9hywhg7mIn8Wb53yXGyNWYkJyWu5ds',
-        'HOST': 'dpg-cjrhnhe1208c739vb07g-a',
+        'NAME': 'django_projectsmanagement',
+        'USER': 'django_projectsmanagement_user',
+        'PASSWORD': 'OoSCul4rnzWzvCE5msh21lYYf5yM0Bmc',
+        'HOST': 'dpg-cjrqcb8jbais73f5i4r0-a',
         'PORT': '5432',
     }
 }
@@ -126,6 +126,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
